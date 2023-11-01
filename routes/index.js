@@ -7,4 +7,8 @@ console.log("File is connected");
 
 // We are using the home function here
 router.get("/", homeController.home);
+router.use("/users", require("./users"));
+
+// For any other router the syntex will be
+// router.use("/routerName",require("./routerName"))
 module.exports = router;
