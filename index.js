@@ -4,6 +4,10 @@ const port = 9000;
 
 // use express router
 app.use("/", require("./routes"));
+// setting view engin as ejs
+app.set("view engine", "ejs");
+// setting the view folder path
+app.set("views", "./views");
 
 // We will make the application listen to server
 app.listen(port, function (err) {
