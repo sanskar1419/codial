@@ -2,8 +2,12 @@ const express = require("express");
 const app = express();
 const port = 9000;
 
+//Use express-ejs-layout
+const expressLayout = require("express-ejs-layouts");
+
 // use express router
 app.use("/", require("./routes"));
+
 // setting view engin as ejs
 app.set("view engine", "ejs");
 // setting the view folder path
