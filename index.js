@@ -1,9 +1,9 @@
 const express = require("express");
 const app = express();
 const port = 9000;
-
 //Aquire express-ejs-layout
 const expressLayout = require("express-ejs-layouts");
+const db = require("./config/mongoose");
 
 // use assets folder for styling
 app.use(express.static("./assets"));
