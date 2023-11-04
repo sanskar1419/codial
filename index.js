@@ -4,6 +4,10 @@ const port = 9000;
 
 //Aquire express-ejs-layout
 const expressLayout = require("express-ejs-layouts");
+
+// use assets folder for styling
+app.use(express.static("./assets"));
+
 // Use express ejs layout
 app.use(expressLayout);
 
