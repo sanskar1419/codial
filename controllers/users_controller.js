@@ -8,6 +8,7 @@ module.exports.profile = async function (req, res) {
     if (user) {
       return res.render("users", {
         title: "Users Home",
+        user: user,
       });
     } else {
       return res.redirect("/users/sign-in");
@@ -29,6 +30,13 @@ module.exports.signUp = function (req, res) {
   return res.render("user_sign_up", {
     title: "Codial | Sign Up",
   });
+};
+
+//Signing out
+module.exports.signOut = function (req, res) {
+  console.log(req.cookies.user_id);
+  res.clearCookie("user_id");
+  return res.redirect("/users/sign-in");
 };
 
 // get sign up data
