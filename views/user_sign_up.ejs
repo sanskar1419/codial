@@ -1,1 +1,13 @@
-<h1>Sign up page</h1>
+<h1>Sign Up</h1>
+<form action="/users/create" method="POST">
+  <input type="text" name="name" placeholder="Your Name" required />
+  <input type="email" name="email" placeholder="abc@gmail.com" required />
+  <input type="password" name="password" placeholder="Password" required />
+  <input
+    type="password"
+    name="confirm-password"
+    placeholder="Confirm-password"
+    required
+  />
+  <button type="submit">Sign Up</button>
+</form>

@@ -21,3 +21,12 @@ module.exports.signUp = function (req, res) {
     title: "Codial | Sign Up",
   });
 };
+
+// get sign up data
+module.exports.create = function (req, res) {
+  //todo later
+};
+
+module.exports.createSession = function (req, res) {
+  //todo later
+};
