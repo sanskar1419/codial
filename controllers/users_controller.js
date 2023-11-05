@@ -1,13 +1,21 @@
 const User = require("../models/user");
-module.exports.profile = function (req, res) {
-  return res.render("users", {
-    title: "Users Home",
-  });
-};
 
-// module.exports.post = function (req, res) {
-//   res.end("<h1>Users Post</h1>");
-// };
+// render profile page
+module.exports.profile = async function (req, res) {
+  // only if user id is present the proceed
+  if (req.cookies.user_id) {
+    const user = await User.findById(req.cookies.user_id);
+    if (user) {
+      return res.render("users", {
+        title: "Users Home",
+      });
+    } else {
+      return res.redirect("/users/sign-in");
+    }
+  } else {
+    return res.redirect("/users/sign-in");
+  }
+};
 
 //render sign in page
 module.exports.signIn = function (req, res) {
