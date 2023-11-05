@@ -6,6 +6,11 @@ const port = 9000;
 const expressLayout = require("express-ejs-layouts");
 const db = require("./config/mongoose");
 
+// de encoding the data from POST request
+app.use(express.urlencoded());
+// tell the app to use cookie parser
+app.use(cookieParsser());
+
 // use assets folder for styling
 app.use(express.static("./assets"));
 

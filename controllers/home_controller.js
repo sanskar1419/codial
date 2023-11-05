@@ -1,4 +1,8 @@
 module.exports.home = function (req, res) {
+  // To print and manipulate the key value pair data present in the cookie
+  // console.log(req.cookies);
+  // res.cookie("user_id", 35);
+
   return res.render("home", {
     title: "Codial Home",
   });
