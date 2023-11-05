@@ -1,4 +1,5 @@
 const express = require("express");
+const cookieParsser = require("cookie-parser");
 const app = express();
 const port = 9000;
 //Aquire express-ejs-layout
