@@ -48,4 +48,6 @@ module.exports.create = async function (req, res) {
 };
 
 // sign in and start user session
-module.exports.createSession = function (req, res) {};
+module.exports.createSession = function (req, res) {
+  return res.redirect("/");
+};

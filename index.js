@@ -5,6 +5,10 @@ const port = 9000;
 //Aquire express-ejs-layout
 const expressLayout = require("express-ejs-layouts");
 const db = require("./config/mongoose");
+//used for session cookie
+const session = require("express-session");
+const passport = require("passport");
+const passportLocal = require("./config/passport-local-strategies");
 
 // de encoding the data from POST request
 app.use(express.urlencoded());
@@ -21,13 +25,29 @@ app.use(expressLayout);
 app.set("layout extractStyles", true);
 app.set("layout extractScripts", true);
 
-// use express router
-app.use("/", require("./routes"));
-
 // setting view engin as ejs
 app.set("view engine", "ejs");
 // setting the view folder path
 app.set("views", "./views");
+
+app.use(
+  session({
+    name: "codial",
+    //change the secret before deployment in production mode
+    secret: "gvghccgcfgcgw",
+    saveUninitialized: false,
+    resave: false,
+    cookie: {
+      maxAge: 1000 * 60 * 100,
+    },
+  })
+);
+
+app.use(passport.initialize());
+app.use(passport.session());
+
+// use express router
+app.use("/", require("./routes"));
 
 // We will make the application listen to server
 app.listen(port, function (err) {
