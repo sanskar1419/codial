@@ -1,1 +1,31 @@
-<header>Page Header using Partial</header>
+<header>
+  Page Header using Partial
+  <ul>
+    <!-- Using locals.user instead of user property can be null variable can't be nill -->
+    <% if(locals.user) { %>
+    <li>
+      <a href="/users/profile"><%= user.name %></a>
+      <br />
+    </li>
+    <li>
+      <a href="/users/sign-out"
+        ><button style="margin-bottom: 20px">Sign Out</button></a
+      >
+      <br />
+    </li>
+    <% } else { %>
+    <li>
+      <a href="/users/sign-in"
+        ><button style="margin-bottom: 20px">Sign In</button></a
+      >
+      <br />
+    </li>
+    <li>
+      <a href="/users/sign-up"
+        ><button style="margin-bottom: 20px">Sign Up</button></a
+      >
+      <br />
+    </li>
+    <% } %>
+  </ul>
+</header>

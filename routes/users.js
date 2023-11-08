@@ -4,7 +4,7 @@ const passport = require("passport");
 
 const usersController = require("../controllers/users_controller");
 //Forward to users profile controller
-router.get("/profile", usersController.profile);
+router.get("/profile", passport.checkAuthentication, usersController.profile);
 router.get("/sign-in", usersController.signIn);
 router.get("/sign-up", usersController.signUp);
 
@@ -15,4 +15,5 @@ router.post(
   passport.authenticate("local", { failureRedirect: "/users/sign-in" }),
   usersController.createSession
 );
+router.get("/sign-out", usersController.distroySession);
 module.exports = router;
