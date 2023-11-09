@@ -1,0 +1,50 @@
+header {
+  background-color: #4a4aae;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: white;
+  height: 10vh;
+}
+
+header .website-name-container h1 {
+  font-size: 2rem;
+  font-weight: bold;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+}
+
+header .ul-container ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+header .ul-container ul li {
+  margin-right: 8px;
+}
+
+header .ul-container ul li #User-name {
+  color: whitesmoke;
+  font-size: 1.2rem;
+  text-decoration: none;
+}
+
+header .ul-container ul li #User-name:active {
+  color: black;
+}
+
+header .ul-container button {
+  border-radius: 5px;
+  color: white;
+  background-color: #164141;
+  padding: 5px;
+}
+
+header .ul-container button:active {
+  background-color: yellow;
+  color: black;
+}
