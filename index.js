@@ -10,6 +10,24 @@ const session = require("express-session");
 const passport = require("passport");
 const passportLocal = require("./config/passport-local-strategies");
 const MongoStore = require("connect-mongo");
+const sassMiddleware = require("node-sass-middleware");
+
+// We need to put up some setting to use saas middleware
+//we need to put them just before the start of server so that it can be precompiled and whenever browser ask for it can give it the precompiled file.
+app.use(
+  sassMiddleware({
+    //Where do I pickup the file for scss to convert it to css
+    src: "./assets/scss",
+    // Where I want to put my css files
+    dest: "./assets/css",
+    // To display some error in debug mode if it not able to compile it we use debug
+    debug: true,
+    //If I wanted it to be in multiple line or single line
+    outputStyle: "expanded",
+    //Now I need to tell where i need to lookout for css file. previously it was css folder
+    prefix: "/css",
+  })
+);
 
 // de encoding the data from POST request
 app.use(express.urlencoded());
