@@ -8,6 +8,7 @@ console.log("File is connected");
 // We are using the home function here
 router.get("/", homeController.home);
 // router.use("/contact", homeController.contact);
+router.use("/posts", require("./posts"));
 
 // Request comes from /users should be forwarded to user.js
 router.use("/users", require("./users"));
