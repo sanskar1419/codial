@@ -12,5 +12,17 @@
     ></textarea>
     <button type="submit" id="btn-post">Post</button>
   </form>
+
+  <div class="posts-container">
+    <ul>
+      <% for(post of posts) { %>
+      <li>
+        <%= post.content%>
+        <br />
+        <%= post.user.name %>
+      </li>
+      <% } %>
+    </ul>
+  </div>
 </section>
 <script type="text/javascript" src="/js/home_layout.js"></script>
