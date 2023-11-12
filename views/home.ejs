@@ -1,5 +1,5 @@
 <link rel="stylesheet" href="/css/home_layout.css" />
-<h1>Codeial / <%=title%></h1>
+<h1 class="Home-Page-Heading"><%=title%></h1>
 <section class="feed-post">
   <h3>Posts</h3>
   <% if(locals.user) { %>
@@ -18,11 +18,45 @@
     <ul>
       <% for(post of posts) { %>
       <li>
-        <p>
-          <%= post.content%>
-          <br />
-          <%= post.user.name %>
-        </p>
+        <div class="post-top">
+          <div class="container-profile-name">
+            <div class="profile-photo">
+              <img src="/images/Arrow.jpg" alt="" />
+            </div>
+            <div class="name-container">
+              <h4><%= post.user.name %></h4>
+            </div>
+          </div>
+          <div class="dropdown">
+            <h3><i class="fa-solid fa-bars"></i></h3>
+          </div>
+        </div>
+        <div class="image-container">
+          <img src="/images/Arrow.jpg" alt="common image" />
+        </div>
+        <!-- Image footer -->
+        <div class="other-link-container">
+          <div class="like-comment-share-container">
+            <a href="" class="like-logo"><i class="fa-regular fa-heart"></i></a>
+            <a href="" class="comment-logo"
+              ><i class="fa-regular fa-comment"></i
+            ></a>
+            <a href="" class="share-logo"
+              ><i class="fa-regular fa-paper-plane"></i
+            ></a>
+          </div>
+          <div class="bookmark-container">
+            <a href="" class="bookmarklogo"
+              ><i class="fa-regular fa-bookmark"></i
+            ></a>
+          </div>
+        </div>
+        <!-- Post content Container -->
+        <div class="post-content-container">
+          <span class="userName"><%= post.user.name %></span>
+          <span class="content"><%= post.content%></span>
+        </div>
+
         <div class="post-comments">
           <% if(locals.user) { %>
           <form action="/comments/create-comment" method="post">
