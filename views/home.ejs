@@ -74,11 +74,13 @@
           <div class="post-comment-list">
             <ul class="post-comment-<%=post._id%>">
               <% for(comment of post.comments){ %>
-              <p>
-                <%= comment.content %>
-                <br />
-                <%= comment.user.name %>
-              </p>
+              <div class="comments-container">
+                <img src="/images/common.jpg" alt="" />
+                <span class="user-name"><%= comment.user.name %></span>
+                <span class="post-particular-comment"
+                  ><%= comment.content %></span
+                >
+              </div>
               <%}%>
             </ul>
           </div>

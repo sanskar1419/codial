@@ -87,3 +87,29 @@ main .feed-post .posts-container ul li .other-link-container .bookmark-container
 main .feed-post .posts-container ul li .post-content-container {
   margin: 20px;
 }
+
+main .feed-post .posts-container ul li .comments-container {
+  margin-bottom: 20px;
+  margin-left: 50px;
+  width: 80%;
+}
+
+main .feed-post .posts-container ul li .comments-container img {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  vertical-align: middle;
+  border: 2px solid yellow;
+  margin-right: 5px;
+}
+
+main .feed-post .posts-container ul li .comments-container .user-name {
+  font-size: 0.9rem;
+  font-weight: bold;
+  vertical-align: middle;
+}
+
+main .feed-post .posts-container ul li .comments-container .post-particular-comment {
+  font-size: 0.8rem;
+  vertical-align: middle;
+}
