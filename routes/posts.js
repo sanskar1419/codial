@@ -9,5 +9,10 @@ router.post(
   passport.checkAuthentication,
   postController.createPost
 );
-
+//Routing to delete post controller action and simultaneusly check for authorization for the user to delete the post
+router.get(
+  "/delete-post/:id",
+  passport.checkAuthentication,
+  postController.deletePost
+);
 module.exports = router;

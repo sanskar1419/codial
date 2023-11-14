@@ -7,9 +7,10 @@
     <textarea
       name="content"
       id="Content-area"
-      cols="30"
+      cols="50"
       rows="2"
       placeholder="Type Here ..........."
+      required
     ></textarea>
     <button type="submit" id="btn-post">Post</button>
   </form>
@@ -28,9 +29,18 @@
             </div>
           </div>
           <div class="dropdown">
-            <h3><i class="fa-solid fa-bars"></i></h3>
+            <!-- Delete post anchor tag. We will also we will check weather the user signed in and user id matches to post user id then only we will show them the delete anchor tag -->
+            <% if(locals.user && locals.user.id == post.user.id) { %>
+            <a href="/posts/delete-post/<%= post.id %>"
+              ><i class="fa-solid fa-trash-can"></i
+            ></a>
+            <%} else {%>
+            <h3><i class="fa-solid fa-grip-lines"></i></h3>
+            <% } %>
+            <!-- ........................................................................................................................................... -->
           </div>
         </div>
+        <!-- common image showing in post -->
         <div class="image-container">
           <img src="/images/Arrow.jpg" alt="common image" />
         </div>
@@ -56,14 +66,20 @@
           <span class="userName"><%= post.user.name %></span>
           <span class="content"><%= post.content%></span>
         </div>
-
+        <!-- Post comment container............................................ -->
         <div class="post-comments">
           <% if(locals.user) { %>
-          <form action="/comments/create-comment" method="post">
+          <form
+            action="/comments/create-comment"
+            method="post"
+            id="comment-form"
+          >
             <input
               type="text"
               name="content"
               placeholder="Write your comment here....."
+              class="input-form"
+              required
             />
             <input type="hidden" name="post" value="<%= post._id %>" />
             <button type="submit">

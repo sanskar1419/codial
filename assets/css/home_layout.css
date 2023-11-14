@@ -16,6 +16,34 @@ main .feed-post h3 {
   font-size: 1.5rem;
 }
 
+main .feed-post #new-post-form {
+  margin: 20px;
+}
+
+main .feed-post #new-post-form textarea {
+  padding-left: 10px;
+  padding-top: 10px;
+  border-radius: 5px;
+  width: 80%;
+  outline: none;
+  color: white;
+  font-size: 1.1rem;
+  background-color: black;
+  border: none;
+  vertical-align: middle;
+}
+
+main .feed-post #new-post-form button {
+  padding: 17px 20px;
+  font-size: 1.1rem;
+  margin-left: -5px;
+  cursor: pointer;
+  vertical-align: middle;
+  background-color: #7a4c4c;
+  border: transparent;
+  color: white;
+}
+
 main .feed-post .posts-container ul {
   list-style: none;
   margin: 0;
@@ -45,6 +73,15 @@ main .feed-post .posts-container ul li .post-top .container-profile-name .profil
   width: 50px;
   border-radius: 50%;
   border: 3px solid yellow;
+}
+
+main .feed-post .posts-container ul li .post-top .dropdown a {
+  color: white;
+  margin-right: 10px;
+}
+
+main .feed-post .posts-container ul li .post-top .dropdown h3 {
+  margin-right: 10px;
 }
 
 main .feed-post .posts-container ul li .image-container {
@@ -86,6 +123,33 @@ main .feed-post .posts-container ul li .other-link-container .bookmark-container
 
 main .feed-post .posts-container ul li .post-content-container {
   margin: 20px;
+}
+
+main .feed-post .posts-container ul li #comment-form {
+  margin: 20px;
+}
+
+main .feed-post .posts-container ul li #comment-form .input-form {
+  padding: 10px;
+  border-radius: 5px;
+  width: 80%;
+  outline: none;
+  color: white;
+  font-size: 0.9rem;
+  background-color: black;
+  border: none;
+  vertical-align: middle;
+}
+
+main .feed-post .posts-container ul li #comment-form button {
+  padding: 5px 7px;
+  font-size: 1.1rem;
+  margin-left: -5px;
+  cursor: pointer;
+  vertical-align: middle;
+  background-color: #7a4c4c;
+  border: transparent;
+  color: white;
 }
 
 main .feed-post .posts-container ul li .comments-container {
