@@ -91,11 +91,20 @@
             <ul class="post-comment-<%=post._id%>">
               <% for(comment of post.comments){ %>
               <div class="comments-container">
-                <img src="/images/common.jpg" alt="" />
-                <span class="user-name"><%= comment.user.name %></span>
-                <span class="post-particular-comment"
-                  ><%= comment.content %></span
-                >
+                <div class="username-comment-image">
+                  <img src="/images/common.jpg" alt="" />
+                  <span class="user-name"><%= comment.user.name %></span>
+                  <span class="post-particular-comment"
+                    ><%= comment.content %></span
+                  >
+                </div>
+                <div class="deleteComment">
+                  <% if(locals.user && (locals.user.id == comment.user.id)) { %>
+                  <a href="/comments/delete-comment/<%= comment.id %>"
+                    ><i class="fa-solid fa-trash-can"></i
+                  ></a>
+                  <%}%>
+                </div>
               </div>
               <%}%>
             </ul>

@@ -151,24 +151,34 @@ main {
           .comments-container {
             margin-bottom: 20px;
             margin-left: 50px;
-            width: 80%;
+            width: 90%;
             // border: 2px solid yellow;
-            img {
-              width: 30px;
-              height: 30px;
-              border-radius: 50%;
-              vertical-align: middle;
-              border: 2px solid yellow;
-              margin-right: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            .username-comment-image {
+              img {
+                width: 30px;
+                height: 30px;
+                border-radius: 50%;
+                vertical-align: middle;
+                border: 2px solid yellow;
+                margin-right: 5px;
+              }
+              .user-name {
+                font-size: 0.9rem;
+                font-weight: bold;
+                vertical-align: middle;
+              }
+              .post-particular-comment {
+                font-size: 0.8rem;
+                vertical-align: middle;
+              }
             }
-            .user-name {
-              font-size: 0.9rem;
-              font-weight: bold;
-              vertical-align: middle;
-            }
-            .post-particular-comment {
-              font-size: 0.8rem;
-              vertical-align: middle;
+            .deleteComment {
+              a {
+                color: white;
+              }
             }
           }
         }

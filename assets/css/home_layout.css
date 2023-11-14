@@ -155,10 +155,13 @@ main .feed-post .posts-container ul li #comment-form button {
 main .feed-post .posts-container ul li .comments-container {
   margin-bottom: 20px;
   margin-left: 50px;
-  width: 80%;
+  width: 90%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
-main .feed-post .posts-container ul li .comments-container img {
+main .feed-post .posts-container ul li .comments-container .username-comment-image img {
   width: 30px;
   height: 30px;
   border-radius: 50%;
@@ -167,13 +170,17 @@ main .feed-post .posts-container ul li .comments-container img {
   margin-right: 5px;
 }
 
-main .feed-post .posts-container ul li .comments-container .user-name {
+main .feed-post .posts-container ul li .comments-container .username-comment-image .user-name {
   font-size: 0.9rem;
   font-weight: bold;
   vertical-align: middle;
 }
 
-main .feed-post .posts-container ul li .comments-container .post-particular-comment {
+main .feed-post .posts-container ul li .comments-container .username-comment-image .post-particular-comment {
   font-size: 0.8rem;
   vertical-align: middle;
+}
+
+main .feed-post .posts-container ul li .comments-container .deleteComment a {
+  color: white;
 }
