@@ -1,4 +1,5 @@
 const Post = require("../models/post");
+const User = require("../models/user");
 module.exports.home = async function (req, res) {
   // To print and manipulate the key value pair data present in the cookie
   // console.log(req.cookies);
@@ -12,10 +13,16 @@ module.exports.home = async function (req, res) {
           path: "user", //this will find the user commented on the post
         },
       });
-    return res.render("home", {
-      title: "Codial Home",
-      posts: posts,
-    });
+    try {
+      const users = await User.find({});
+      return res.render("home", {
+        title: "Codial Home",
+        posts: posts,
+        all_users: users,
+      });
+    } catch (err) {
+      console.log("Error in finding user : ", err);
+    }
   } catch (err) {
     console.log("Unable to find post ", err);
     return;

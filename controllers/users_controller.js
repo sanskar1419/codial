@@ -1,8 +1,15 @@
 const User = require("../models/user");
-module.exports.profile = function (req, res) {
-  return res.render("users", {
-    title: "Users Home",
-  });
+module.exports.profile = async function (req, res) {
+  try {
+    const user = await User.findById(req.params.id);
+    return res.render("users", {
+      title: "Users Home",
+      profile_user: user,
+    });
+  } catch (err) {
+    console.log("Unable to load profile page : ", err);
+    return;
+  }
 };
 
 // module.exports.post = function (req, res) {
