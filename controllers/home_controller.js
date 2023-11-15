@@ -13,18 +13,15 @@ module.exports.home = async function (req, res) {
           path: "user", //this will find the user commented on the post
         },
       });
-    try {
-      const users = await User.find({});
-      return res.render("home", {
-        title: "Codial Home",
-        posts: posts,
-        all_users: users,
-      });
-    } catch (err) {
-      console.log("Error in finding user : ", err);
-    }
+
+    const users = await User.find({});
+    return res.render("home", {
+      title: "Codial Home",
+      posts: posts,
+      all_users: users,
+    });
   } catch (err) {
-    console.log("Unable to find post ", err);
+    console.log("Error !!!!!!!!!!!!!!!!!!!!", err);
     return;
   }
 

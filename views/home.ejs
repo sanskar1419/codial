@@ -1,34 +1,38 @@
 <link rel="stylesheet" href="/css/home_layout.css" />
 <h1 class="Home-Page-Heading"><%=title%></h1>
-<section class="feed-post">
-  <h3>Posts</h3>
-  <% if(locals.user) { %>
-  <form action="/posts/create-post" method="post" id="new-post-form">
-    <textarea
-      name="content"
-      id="Content-area"
-      cols="50"
-      rows="2"
-      placeholder="Type Here ..........."
-      required
-    ></textarea>
-    <button type="submit" id="btn-post">Post</button>
-  </form>
-  <%}%>
-  <div class="posts-container">
-    <ul>
-      <% for(post of posts) { %> <%- include('_post') -%> <% } %>
-    </ul>
-  </div>
-</section>
 
-<section id="Users-section">
-  <h4>Friends</h4>
-  <% for(u of all_users) { %>
-  <p>
-    <a href="/users/profile/<%=u.id%>"> <%=u.name%> </a>
-  </p>
-  <% } %>
-</section>
+<div class="home-page-container">
+  <section class="feed-post">
+    <h3>Posts</h3>
+    <% if(locals.user) { %>
+    <form action="/posts/create-post" method="post" id="new-post-form">
+      <textarea
+        name="content"
+        id="Content-area"
+        cols="50"
+        rows="2"
+        placeholder="Type Here ..........."
+        required
+      ></textarea>
+      <button type="submit" id="btn-post">Post</button>
+    </form>
+    <%}%>
+    <div class="posts-container">
+      <ul>
+        <% for(post of posts) { %> <%- include('_post') -%> <% } %>
+      </ul>
+    </div>
+  </section>
+
+  <section id="Users-section">
+    <h3>Friends</h3>
+    <% for(u of all_users) { %>
+    <p>
+      <img src="/images/Arrow.jpg" alt="User Image" />
+      <a href="/users/profile/<%=u.id%>"> <%=u.name%> </a>
+    </p>
+    <% } %>
+  </section>
+</div>
 
 <script type="text/javascript" src="/js/home_layout.js"></script>

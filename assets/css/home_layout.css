@@ -8,19 +8,26 @@ main .Home-Page-Heading {
   border-radius: 20px;
 }
 
-main .feed-post {
+main .home-page-container {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: start;
+}
+
+main .home-page-container .feed-post {
+  width: 70%;
   margin: 15px;
 }
 
-main .feed-post h3 {
+main .home-page-container .feed-post h3 {
   font-size: 1.5rem;
 }
 
-main .feed-post #new-post-form {
+main .home-page-container .feed-post #new-post-form {
   margin: 20px;
 }
 
-main .feed-post #new-post-form textarea {
+main .home-page-container .feed-post #new-post-form textarea {
   padding-left: 10px;
   padding-top: 10px;
   border-radius: 5px;
@@ -33,7 +40,7 @@ main .feed-post #new-post-form textarea {
   vertical-align: middle;
 }
 
-main .feed-post #new-post-form button {
+main .home-page-container .feed-post #new-post-form button {
   padding: 17px 20px;
   font-size: 1.1rem;
   margin-left: -5px;
@@ -44,13 +51,17 @@ main .feed-post #new-post-form button {
   color: white;
 }
 
-main .feed-post .posts-container ul {
+main .home-page-container .feed-post #new-post-form button:active {
+  background-color: yellow;
+}
+
+main .home-page-container .feed-post .posts-container ul {
   list-style: none;
   margin: 0;
   padding: 0;
 }
 
-main .feed-post .posts-container ul li .post-top {
+main .home-page-container .feed-post .posts-container ul li .post-top {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -59,46 +70,50 @@ main .feed-post .posts-container ul li .post-top {
   margin-bottom: 10px;
 }
 
-main .feed-post .posts-container ul li .post-top .container-profile-name {
+main .home-page-container .feed-post .posts-container ul li .post-top .container-profile-name {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
-main .feed-post .posts-container ul li .post-top .container-profile-name .profile-photo {
+main .home-page-container .feed-post .posts-container ul li .post-top .container-profile-name .profile-photo {
   margin-right: 15px;
 }
 
-main .feed-post .posts-container ul li .post-top .container-profile-name .profile-photo img {
+main .home-page-container .feed-post .posts-container ul li .post-top .container-profile-name .profile-photo img {
   width: 50px;
   border-radius: 50%;
   border: 3px solid yellow;
 }
 
-main .feed-post .posts-container ul li .post-top .dropdown a {
+main .home-page-container .feed-post .posts-container ul li .post-top .dropdown a {
   color: white;
   margin-right: 10px;
 }
 
-main .feed-post .posts-container ul li .post-top .dropdown h3 {
+main .home-page-container .feed-post .posts-container ul li .post-top .dropdown a:active {
+  color: yellow;
+}
+
+main .home-page-container .feed-post .posts-container ul li .post-top .dropdown h3 {
   margin-right: 10px;
 }
 
-main .feed-post .posts-container ul li .image-container {
+main .home-page-container .feed-post .posts-container ul li .image-container {
   width: auto;
-  height: 60vh;
+  height: 40vw;
   border-radius: 5px;
   margin: 10px 0;
   overflow: hidden;
   border: 2px solid #514d4d;
 }
 
-main .feed-post .posts-container ul li .image-container img {
+main .home-page-container .feed-post .posts-container ul li .image-container img {
   width: 100%;
   box-shadow: inset 0 0 8px 8px #2b2a2a;
 }
 
-main .feed-post .posts-container ul li .other-link-container {
+main .home-page-container .feed-post .posts-container ul li .other-link-container {
   width: 100%;
   height: 20px;
   display: flex;
@@ -107,29 +122,29 @@ main .feed-post .posts-container ul li .other-link-container {
   margin-bottom: 15px;
 }
 
-main .feed-post .posts-container ul li .other-link-container .like-comment-share-container {
+main .home-page-container .feed-post .posts-container ul li .other-link-container .like-comment-share-container {
   width: 30%;
 }
 
-main .feed-post .posts-container ul li .other-link-container .like-comment-share-container a {
+main .home-page-container .feed-post .posts-container ul li .other-link-container .like-comment-share-container a {
   margin-left: 20px;
   color: white;
 }
 
-main .feed-post .posts-container ul li .other-link-container .bookmark-container a {
+main .home-page-container .feed-post .posts-container ul li .other-link-container .bookmark-container a {
   margin-right: 20px;
   color: white;
 }
 
-main .feed-post .posts-container ul li .post-content-container {
+main .home-page-container .feed-post .posts-container ul li .post-content-container {
   margin: 20px;
 }
 
-main .feed-post .posts-container ul li #comment-form {
+main .home-page-container .feed-post .posts-container ul li #comment-form {
   margin: 20px;
 }
 
-main .feed-post .posts-container ul li #comment-form .input-form {
+main .home-page-container .feed-post .posts-container ul li #comment-form .input-form {
   padding: 10px;
   border-radius: 5px;
   width: 80%;
@@ -141,7 +156,7 @@ main .feed-post .posts-container ul li #comment-form .input-form {
   vertical-align: middle;
 }
 
-main .feed-post .posts-container ul li #comment-form button {
+main .home-page-container .feed-post .posts-container ul li #comment-form button {
   padding: 5px 7px;
   font-size: 1.1rem;
   margin-left: -5px;
@@ -152,7 +167,11 @@ main .feed-post .posts-container ul li #comment-form button {
   color: white;
 }
 
-main .feed-post .posts-container ul li .comments-container {
+main .home-page-container .feed-post .posts-container ul li #comment-form button:active {
+  background-color: yellow;
+}
+
+main .home-page-container .feed-post .posts-container ul li .comments-container {
   margin-bottom: 20px;
   margin-left: 50px;
   width: 90%;
@@ -161,7 +180,7 @@ main .feed-post .posts-container ul li .comments-container {
   justify-content: space-between;
 }
 
-main .feed-post .posts-container ul li .comments-container .username-comment-image img {
+main .home-page-container .feed-post .posts-container ul li .comments-container .username-comment-image img {
   width: 30px;
   height: 30px;
   border-radius: 50%;
@@ -170,17 +189,51 @@ main .feed-post .posts-container ul li .comments-container .username-comment-ima
   margin-right: 5px;
 }
 
-main .feed-post .posts-container ul li .comments-container .username-comment-image .user-name {
+main .home-page-container .feed-post .posts-container ul li .comments-container .username-comment-image .user-name {
   font-size: 0.9rem;
   font-weight: bold;
   vertical-align: middle;
 }
 
-main .feed-post .posts-container ul li .comments-container .username-comment-image .post-particular-comment {
+main .home-page-container .feed-post .posts-container ul li .comments-container .username-comment-image .post-particular-comment {
   font-size: 0.8rem;
   vertical-align: middle;
 }
 
-main .feed-post .posts-container ul li .comments-container .deleteComment a {
+main .home-page-container .feed-post .posts-container ul li .comments-container .deleteComment a {
   color: white;
+}
+
+main .home-page-container .feed-post .posts-container ul li .comments-container .deleteComment a:active {
+  color: yellow;
+}
+
+main .home-page-container #Users-section {
+  width: 15%;
+  height: 100%;
+  margin-top: 15px;
+}
+
+main .home-page-container #Users-section h3 {
+  font-size: 1.5rem;
+}
+
+main .home-page-container #Users-section img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 2px solid yellow;
+  margin-right: 15px;
+  vertical-align: middle;
+}
+
+main .home-page-container #Users-section a {
+  color: white;
+  font-size: 1.1rem;
+  text-decoration: none;
+  letter-spacing: 1.1px;
+}
+
+main .home-page-container #Users-section a:active {
+  color: yellow;
 }
