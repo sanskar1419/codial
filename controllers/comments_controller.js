@@ -5,22 +5,17 @@ module.exports.createComments = async function (req, res) {
   try {
     const post = await Post.findById(req.body.post);
     if (post) {
-      try {
-        const newComment = await Comment.create({
-          content: req.body.content,
-          post: req.body.post,
-          user: req.user._id,
-        });
-        post.comments.push(newComment);
-        post.save();
-        return res.redirect("/");
-      } catch (err) {
-        console.log("Error in creating the post !!!!!!!", err);
-        return;
-      }
+      const newComment = await Comment.create({
+        content: req.body.content,
+        post: req.body.post,
+        user: req.user._id,
+      });
+      post.comments.push(newComment);
+      post.save();
+      return res.redirect("/");
     }
   } catch (err) {
-    console.log("Post does not exist !!!!!!!!!! ", err);
+    console.log("Error !!!!!!!!!!!!!!!!!!! ", err);
     return;
   }
 };
@@ -38,18 +33,13 @@ module.exports.deleteComment = async function (req, res) {
       let postId = selectedComment.post;
       // console.log(selectedComment);
       await selectedComment.deleteOne();
-      try {
-        await Post.findByIdAndUpdate(postId, {
-          $pull: { comments: req.params.id },
-        });
-        return res.redirect("back");
-      } catch (err) {
-        console.log("Enable to delete comment Id from that post : ", err);
-        return;
-      }
+      await Post.findByIdAndUpdate(postId, {
+        $pull: { comments: req.params.id },
+      });
+      return res.redirect("back");
     }
   } catch (err) {
-    console.log("Comment doesn't exist", err);
+    console.log("Error !!!!!!!!!!!!!!!!!!!!!!!", err);
     return;
   }
 };

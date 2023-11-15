@@ -7,7 +7,7 @@ module.exports.profile = async function (req, res) {
       profile_user: user,
     });
   } catch (err) {
-    console.log("Unable to load profile page : ", err);
+    console.log("Error !!!!!!!!!!!!!!!!!! ", err);
     return;
   }
 };
@@ -22,7 +22,7 @@ module.exports.update = async function (req, res) {
       return res.redirect("back");
     }
   } catch (err) {
-    console.log("Unable to update the user detail : ", err);
+    console.log("Error !!!!!!!!!!!!!!!!!!!!! ", err);
     return res.status(401).send("unauthoried");
   }
 };
@@ -59,18 +59,13 @@ module.exports.create = async function (req, res) {
     }
     const user = await User.findOne({ email: req.body.email });
     if (!user) {
-      try {
-        const newUser = await User.create(req.body);
-        return res.redirect("/users/sign-in");
-      } catch (err) {
-        console.log("Error in creating the user in signing up ", err);
-        return;
-      }
+      const newUser = await User.create(req.body);
+      return res.redirect("/users/sign-in");
     } else {
       return res.redirect("back");
     }
   } catch (err) {
-    console.log("Error in finding the user in signing up ", err);
+    console.log("Error !!!!!!!!!!!!!!!!!! ", err);
     return;
   }
 };
