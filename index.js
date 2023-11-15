@@ -11,6 +11,8 @@ const passport = require("passport");
 const passportLocal = require("./config/passport-local-strategies");
 const MongoStore = require("connect-mongo");
 const sassMiddleware = require("node-sass-middleware");
+// used for flash messeging
+const flash = require("connect-flash");
 
 // We need to put up some setting to use saas middleware
 //we need to put them just before the start of server so that it can be precompiled and whenever browser ask for it can give it the precompiled file.
@@ -76,6 +78,8 @@ app.use(passport.session());
 
 app.use(passport.setAuthenticatedUser);
 
+// use connect flash
+app.use(flash());
 // use express router
 app.use("/", require("./routes"));
 
