@@ -12,6 +12,21 @@ module.exports.profile = async function (req, res) {
   }
 };
 
+// Controller action for updating user profile
+module.exports.update = async function (req, res) {
+  try {
+    // console.log(req.user.id);
+    // console.log(req.params.id);
+    if (req.user.id == req.params.id) {
+      const user = await User.findByIdAndUpdate(req.params.id, req.body);
+      return res.redirect("back");
+    }
+  } catch (err) {
+    console.log("Unable to update the user detail : ", err);
+    return res.status(401).send("unauthoried");
+  }
+};
+
 // module.exports.post = function (req, res) {
 //   res.end("<h1>Users Post</h1>");
 // };
