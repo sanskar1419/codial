@@ -11,9 +11,11 @@ module.exports.createPost = async function (req, res) {
       // for saving user
       user: req.user._id,
     });
+    req.flash("success", "Post has been Successfully Created !!!!!!!!!!!!!");
     console.log(newPost);
     return res.redirect("back");
   } catch (err) {
+    req.flash("error", err);
     console.log("Error !!!!!!!!!!!!!!!!!!!!", err);
     return;
   }
@@ -35,9 +37,14 @@ module.exports.deletePost = async function (req, res) {
       await post.deleteOne();
       // After deleting the post we also need to delete comment under it So we will use deleteMany
       await Comment.deleteMany({ post: req.params.id });
+      req.flash(
+        "success",
+        "Post along with the comment successfully deleleted"
+      );
       return res.redirect("back");
     }
   } catch (err) {
+    req.flash("error", err);
     console.log("Error !!!!!!!!!!!", err);
     return;
   }

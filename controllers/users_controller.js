@@ -7,6 +7,7 @@ module.exports.profile = async function (req, res) {
       profile_user: user,
     });
   } catch (err) {
+    req.flash("error", err);
     console.log("Error !!!!!!!!!!!!!!!!!! ", err);
     return;
   }
@@ -19,10 +20,12 @@ module.exports.update = async function (req, res) {
     // console.log(req.params.id);
     if (req.user.id == req.params.id) {
       const user = await User.findByIdAndUpdate(req.params.id, req.body);
+      req.flash("success", "Details Updated Succesfully !!!!!!!!!!!");
       return res.redirect("back");
     }
   } catch (err) {
-    console.log("Error !!!!!!!!!!!!!!!!!!!!! ", err);
+    req.flash("error", err);
+    console.log("Error !!!!!!!!!!!!!!!!!! ", err);
     return res.status(401).send("unauthoried");
   }
 };
@@ -55,13 +58,20 @@ module.exports.signUp = function (req, res) {
 module.exports.create = async function (req, res) {
   try {
     if (req.body.password != req.body.confirm_password) {
+      req.flash("error", "Error! Confirm Password and Passwors doesn't match");
       return res.redirect("back");
     }
     const user = await User.findOne({ email: req.body.email });
+
     if (!user) {
       const newUser = await User.create(req.body);
+      req.flash("success", "Signed Up Successfully. Now you can Sign In");
       return res.redirect("/users/sign-in");
     } else {
+      req.flash(
+        "info",
+        "Email Already exist, Try to signed in or use other email"
+      );
       return res.redirect("back");
     }
   } catch (err) {

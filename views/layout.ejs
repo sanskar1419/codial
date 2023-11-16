@@ -47,6 +47,16 @@
         timeout: 1500
         }).show();
       <% } %>
+
+      <% if(flash.info && flash.info.length > 0) { %>
+        new Noty({
+        theme: 'relax',
+        text: '<%= flash.info %>',
+        type: 'info',
+        layout: 'topCenter',
+        timeout: 3000
+        }).show();
+      <% } %>
     </script>
   </body>
 </html>
