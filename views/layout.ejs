@@ -4,15 +4,20 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title><%= title %></title>
+    <!-- Noty.js Cdn -->
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.css"
     />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.js"></script>
+    <!-- Add JQuery Cdn -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <!-- Css file linking -->
     <link rel="stylesheet" href="/css/layout.css" />
     <link rel="stylesheet" href="/css/header.css" />
     <link rel="stylesheet" href="/css/footer.css" />
     <%- style %>
+    <!-- Fontawesome Cdn -->
     <script
       src="https://kit.fontawesome.com/acf3eaf7bf.js"
       crossorigin="anonymous"
@@ -27,6 +32,7 @@
     <%- include('_footer'); %>
     <script type="text/javascript" src="/js/layout.js"></script>
     <%- script %>
+    <!-- Noty js Syntax -->
     <script>
       <% if(flash.success && flash.success.length > 0) { %>
         new Noty({
