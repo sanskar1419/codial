@@ -17,7 +17,7 @@
       <button type="submit" id="btn-post">Post</button>
     </form>
     <%}%>
-    <div class="posts-container">
+    <div class="posts-container" id="Post-list-container">
       <ul>
         <% for(post of posts) { %> <%- include('_post') -%> <% } %>
       </ul>

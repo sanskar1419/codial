@@ -1,4 +1,4 @@
-<li>
+<li id="post-<%= post._id%>">
   <div class="post-top">
     <div class="container-profile-name">
       <div class="profile-photo">
@@ -11,7 +11,7 @@
     <div class="dropdown">
       <!-- Delete post anchor tag. We will also we will check weather the user signed in and user id matches to post user id then only we will show them the delete anchor tag -->
       <% if(locals.user && locals.user.id == post.user.id) { %>
-      <a href="/posts/delete-post/<%= post.id %>"
+      <a class="delete-post-button" href="/posts/delete-post/<%= post.id %>"
         ><i class="fa-solid fa-trash-can"></i
       ></a>
       <%} else {%>
