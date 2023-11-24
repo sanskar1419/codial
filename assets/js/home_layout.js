@@ -15,7 +15,13 @@
         type: "post",
         url: "/posts/create-post",
         data: newPostForm.serialize(),
-        success: function (data) {
+        success: function (data, status, xhr) {
+          console.log(status);
+          console.log(xhr);
+          xhr.flash(
+            "success",
+            "Post has been Successfully Created !!!!!!!!!!!!!"
+          );
           let newPost = newPostDom(data.data.post);
           $("#Post-list-container>ul").prepend(newPost);
           deletePost($(" .delete-post-button", newPost));
