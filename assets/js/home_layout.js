@@ -16,6 +16,7 @@
         url: "/posts/create-post",
         data: newPostForm.serialize(),
         success: function (data, status, xhr) {
+          console.log(data);
           notyNotification("Post Created");
           // new Noty({
           //   theme: "mint",
@@ -24,7 +25,7 @@
           //   layout: "topCenter",
           //   timeout: 1500,
           // }).show();
-          let newPost = newPostDom(data.data.post);
+          let newPost = newPostDom(data.data.post, data.data.user_name);
           $("#Post-list-container>ul").prepend(newPost);
           deletePost($(" .delete-post-button", newPost));
         },
@@ -37,7 +38,7 @@
   };
 
   //   Method to create a post in DOM
-  let newPostDom = function (post) {
+  let newPostDom = function (post, user_name) {
     return $(`<li id="post-${post._id}">
     <div class="post-top">
       <div class="container-profile-name">
@@ -45,7 +46,7 @@
           <img src="/images/Arrow.jpg" alt="" />
         </div>
         <div class="name-container">
-          <h4>${post.user.name}</h4>
+          <h4>${user_name}</h4>
         </div>
       </div>
       <div class="dropdown">
@@ -73,7 +74,7 @@
     </div>
     <!-- Post content Container -->
     <div class="post-content-container">
-      <span class="userName">${post.user.name}</span>
+      <span class="userName">${user_name}</span>
       <span class="content">${post.content}</span>
     </div>
     <!-- Post comment container............................................ -->
