@@ -16,18 +16,21 @@
         url: "/posts/create-post",
         data: newPostForm.serialize(),
         success: function (data, status, xhr) {
-          console.log(status);
-          console.log(xhr);
-          xhr.flash(
-            "success",
-            "Post has been Successfully Created !!!!!!!!!!!!!"
-          );
+          notyNotification("Post Created");
+          // new Noty({
+          //   theme: "mint",
+          //   text: "Post Created",
+          //   type: "alert",
+          //   layout: "topCenter",
+          //   timeout: 1500,
+          // }).show();
           let newPost = newPostDom(data.data.post);
           $("#Post-list-container>ul").prepend(newPost);
           deletePost($(" .delete-post-button", newPost));
         },
         error: function (error) {
           console.log(error.responseText);
+          notyNotification(error.responseText);
         },
       });
     });
@@ -107,13 +110,26 @@
         type: "get",
         url: $(deleteLink).prop("href"), //this is how we get the the value of href in a tag
         success: function (data) {
+          notyNotification("Post Deleted");
           $(`#post-${data.data.post_id}`).remove();
         },
         error: function (error) {
           console.log(error.responseText);
+          notyNotification(error.responseText);
         },
       });
     });
+  };
+
+  // Method for creating showing Noty Notification
+  let notyNotification = function (textMessage) {
+    new Noty({
+      theme: "relax",
+      text: textMessage,
+      type: "alert",
+      layout: "topCenter",
+      timeout: 1500,
+    }).show();
   };
 
   createPost();
