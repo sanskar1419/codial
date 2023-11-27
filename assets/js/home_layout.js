@@ -102,6 +102,8 @@
   </li>
   `);
   };
+  let all_delete_link = $("#Post-list-container>ul>li");
+  console.log(all_delete_link);
   // Method to delete the post from DOM
   let deletePost = function (deleteLink) {
     $(deleteLink).click(function (e) {
@@ -133,5 +135,16 @@
     }).show();
   };
 
+  // loop over all the existing posts on the page (when the window loads for the first time) and call the delete post method on delete link of each, also add AJAX (using the class we've created) to the delete button of each
+  let convertingAllDeleteButton = function () {
+    $("#Post-list-container>ul>li").each(function () {
+      let self = $(this);
+      console.log(self);
+      let deleteButton = $(" .delete-post-button", self);
+      console.log(deleteButton);
+      deletePost(deleteButton);
+    });
+  };
   createPost();
+  convertingAllDeleteButton();
 }
