@@ -1,4 +1,4 @@
-<li>
+<li id="comment-<%=comment.id%>">
   <div class="comments-container">
     <div class="username-comment-image">
       <img src="/images/common.jpg" alt="" />
@@ -7,7 +7,9 @@
     </div>
     <div class="deleteComment">
       <% if(locals.user && (locals.user.id == comment.user.id)) { %>
-      <a href="/comments/delete-comment/<%= comment.id %>"
+      <a
+        class="delete-comment-button"
+        href="/comments/delete-comment/<%= comment._id %>"
         ><i class="fa-solid fa-trash-can"></i
       ></a>
       <%}%>
