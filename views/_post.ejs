@@ -45,7 +45,12 @@
   <!-- Post comment container............................................ -->
   <div class="post-comments">
     <% if(locals.user) { %>
-    <form action="/comments/create-comment" method="post" id="comment-form">
+    <form
+      action="/comments/create-comment"
+      method="post"
+      id="post-<%= post._id%>-comment-form"
+      class="comment-form"
+    >
       <input
         type="text"
         name="content"
@@ -59,8 +64,8 @@
       </button>
     </form>
     <%}%>
-    <div class="post-comment-list">
-      <ul class="post-comment-<%=post._id%>">
+    <div class="post-comment-list" id="comment-list-container">
+      <ul id="post-comment-<%=post._id%>">
         <% for(comment of post.comments){ %> <%- include('_comment') -%> <%}%>
       </ul>
     </div>
