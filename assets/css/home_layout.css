@@ -140,11 +140,11 @@ main .home-page-container .feed-post .posts-container ul li .post-content-contai
   margin: 20px;
 }
 
-main .home-page-container .feed-post .posts-container ul li #comment-form {
+main .home-page-container .feed-post .posts-container ul li .comment-form {
   margin: 20px;
 }
 
-main .home-page-container .feed-post .posts-container ul li #comment-form .input-form {
+main .home-page-container .feed-post .posts-container ul li .comment-form .input-form {
   padding: 10px;
   border-radius: 5px;
   width: 80%;
@@ -156,7 +156,7 @@ main .home-page-container .feed-post .posts-container ul li #comment-form .input
   vertical-align: middle;
 }
 
-main .home-page-container .feed-post .posts-container ul li #comment-form button {
+main .home-page-container .feed-post .posts-container ul li .comment-form button {
   padding: 5px 7px;
   font-size: 1.1rem;
   margin-left: -5px;
@@ -167,7 +167,7 @@ main .home-page-container .feed-post .posts-container ul li #comment-form button
   color: white;
 }
 
-main .home-page-container .feed-post .posts-container ul li #comment-form button:active {
+main .home-page-container .feed-post .posts-container ul li .comment-form button:active {
   background-color: yellow;
 }
 
