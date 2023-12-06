@@ -19,9 +19,27 @@ module.exports.update = async function (req, res) {
     // console.log(req.user.id);
     // console.log(req.params.id);
     if (req.user.id == req.params.id) {
-      const user = await User.findByIdAndUpdate(req.params.id, req.body);
-      req.flash("success", "Details Updated Succesfully !!!!!!!!!!!");
-      return res.redirect("back");
+      const user = await User.findByIdAndUpdate(req.params.id);
+      // Here one thing we need to note that we cannot accsess the body params directly since while creating form we have define enctype as multipart/form-data. So we need to accsess it differently. So for that multer static function uploadAvatar will be used because it take req as an argument also.
+      User.uploadAvatar(req, res, function (err) {
+        if (err) {
+          req.flash(
+            "error",
+            "Unable to update the profile !!!!!!!!!!!!!!!!!!!"
+          );
+          console.log("*******************Multer Error ****************", err);
+        }
+        // console.log(req.file);
+        user.name = req.body.name;
+        user.email = req.body.email;
+        if (req.file) {
+          // it is just saving the path of the uploaded file into the user schema avatar
+          user.avatar = User.avatarPath + "/" + req.file.filename;
+        }
+        user.save();
+        req.flash("success", "Details Updated Succesfully !!!!!!!!!!!");
+        return res.redirect("back");
+      });
     }
   } catch (err) {
     req.flash("error", err);

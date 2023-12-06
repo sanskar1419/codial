@@ -40,7 +40,10 @@ let storage = multer.diskStorage({
 });
 
 // Static Function
-userSchema.statics.uploadAvatar = multer({ storage: storage });
+// Here we are linking  avatar to the storage path. Here single is specifing that the user can select only one file at a time.To make it available.
+userSchema.statics.uploadAvatar = multer({ storage: storage }).single("avatar");
+// Now we will want that avatar path to be available publically.
+userSchema.statics.avatarPath = AVATAR_PATH;
 
 const User = mongoose.model("User", userSchema);
 module.exports = User;
