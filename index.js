@@ -40,6 +40,9 @@ app.use(cookieParsser());
 // use assets folder for styling
 app.use(express.static("./assets"));
 
+// Here we are joining the codial forlder path with uploads and telling to use this of finding the destination folder
+app.use("/uploads", express.static(__dirname + "/uploads"));
+
 // Use express ejs layout
 app.use(expressLayout);
 

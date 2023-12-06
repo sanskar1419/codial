@@ -39,9 +39,28 @@ let storage = multer.diskStorage({
   },
 });
 
+const maxSize = 2 * 1024 * 1024; //Max size for the file to upload
 // Static Function
 // Here we are linking  avatar to the storage path. Here single is specifing that the user can select only one file at a time.To make it available.
-userSchema.statics.uploadAvatar = multer({ storage: storage }).single("avatar");
+userSchema.statics.uploadAvatar = multer({
+  storage: storage,
+  fileFilter: (req, file, cb) => {
+    if (
+      file.mimetype == "image/png" ||
+      file.mimetype == "image/jpg" ||
+      file.mimetype == "image/jpeg"
+    ) {
+      cb(null, true);
+    } else {
+      cb(null, false);
+      req.flash("error", "Only .png .jpg and .jpeg format allowed !");
+      return cb(new Error("Only .png .jpg and .jpeg format allowed !"));
+    }
+  },
+  limits: {
+    fieldSize: maxSize,
+  },
+}).single("avatar");
 // Now we will want that avatar path to be available publically.
 userSchema.statics.avatarPath = AVATAR_PATH;
 

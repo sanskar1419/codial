@@ -1,7 +1,8 @@
 <link rel="stylesheet" href="/css/users_layout.css" />
-<h1>This is users page</h1>
 
 <% if(user.id == profile_user.id){ %>
+<!-- If we just include it like this it will not work because browser does'not the path of the file -->
+<img src="<%=user.avatar%>" alt="<%=user.name%>" width="100px" />
 <form
   action="/users/update/<%= profile_user.id %>"
   method="post"
