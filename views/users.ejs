@@ -1,33 +1,40 @@
 <link rel="stylesheet" href="/css/users_layout.css" />
-
-<% if(user.id == profile_user.id){ %>
-<!-- If we just include it like this it will not work because browser does'not the path of the file -->
-<img src="<%=user.avatar%>" alt="<%=user.name%>" width="100px" />
-<form
-  action="/users/update/<%= profile_user.id %>"
-  method="post"
-  enctype="multipart/form-data"
->
-  <input
-    type="text"
-    name="name"
-    value="<%= profile_user.name %>"
-    placeholder="Your name"
-    required
-  />
-  <input
-    type="email"
-    name="email"
-    value="<%= profile_user.email %>"
-    placeholder="Your email"
-    required
-  />
-  <input type="file" name="avatar" placeholder="Profile-Picture" />
-  <button type="submit">Update</button>
-</form>
-<%} else { %>
-<p><%= profile_user.name %></p>
-<p><%= profile_user.email %></p>
-<%}%>
-
+<div class="profile-page-container">
+  <% if(user.id == profile_user.id){ %>
+  <!-- If we just include it like this it will not work because browser does'not the path of the file -->
+  <div class="user_image_container">
+    <img src="<%=user.avatar%>" alt="<%=user.name%>" />
+  </div>
+  <div class="update_porm_container">
+    <form
+      action="/users/update/<%= profile_user.id %>"
+      method="post"
+      enctype="multipart/form-data"
+    >
+      <input
+        type="text"
+        name="name"
+        value="<%= profile_user.name %>"
+        placeholder="Your name"
+        required
+      />
+      <input
+        type="email"
+        name="email"
+        value="<%= profile_user.email %>"
+        placeholder="Your email"
+        required
+      />
+      <input type="file" name="avatar" placeholder="Profile-Picture" />
+      <button type="submit">Update</button>
+    </form>
+  </div>
+  <%} else { %>
+  <div class="name-email-container">
+    <img src="<%=profile_user.avatar%>" alt="<%=profile_user.name%>" />
+    <p><%= profile_user.name %></p>
+    <p><%= profile_user.email %></p>
+  </div>
+  <%}%>
+</div>
 <script type="text/javascript" src="/js/users_layout.js"></script>

@@ -1,0 +1,65 @@
+.profile-page-container {
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-direction: column;
+}
+
+.profile-page-container .user_image_container img {
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  margin-bottom: 10px;
+}
+
+.profile-page-container .update_porm_container form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.profile-page-container .update_porm_container form input {
+  margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 5px;
+  width: 100%;
+  outline: none;
+  color: white;
+  font-size: 1.1rem;
+  background-color: #3f3535;
+  border: none;
+  vertical-align: middle;
+}
+
+.profile-page-container .update_porm_container form button {
+  padding: 17px 20px;
+  font-size: 1.1rem;
+  margin-left: -5px;
+  cursor: pointer;
+  vertical-align: middle;
+  background-color: #4f3535;
+  border: transparent;
+  color: white;
+  border-radius: 5px;
+}
+
+.profile-page-container .update_porm_container form button:active {
+  background-color: yellow;
+  color: black;
+}
+
+.profile-page-container .name-email-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.profile-page-container .name-email-container img {
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  margin-bottom: 10px;
+}

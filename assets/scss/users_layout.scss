@@ -1,3 +1,67 @@
 // h1 {
 //   background-color: rgb(17, 241, 17);
 // }
+.profile-page-container {
+  //   height: 60vh;
+  //   border: 2px solid white;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-direction: column;
+  .user_image_container {
+    img {
+      width: 250px;
+      height: 250px;
+      border-radius: 50%;
+      margin-bottom: 10px;
+    }
+  }
+  .update_porm_container {
+    form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      input {
+        margin-bottom: 10px;
+        padding: 10px;
+        border-radius: 5px;
+        width: 100%;
+        outline: none;
+        color: white;
+        font-size: 1.1rem;
+        background-color: rgb(63, 53, 53);
+        border: none;
+        vertical-align: middle;
+      }
+      button {
+        padding: 17px 20px;
+        font-size: 1.1rem;
+        margin-left: -5px;
+        cursor: pointer;
+        vertical-align: middle;
+        background-color: rgb(79, 53, 53);
+        border: transparent;
+        color: white;
+        border-radius: 5px;
+      }
+      button:active {
+        background-color: yellow;
+        color: black;
+      }
+    }
+  }
+  .name-email-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    img {
+      width: 250px;
+      height: 250px;
+      border-radius: 50%;
+      margin-bottom: 10px;
+    }
+  }
+}
