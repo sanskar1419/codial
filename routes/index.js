@@ -13,6 +13,7 @@ router.use("/comments", require("./comment"));
 
 // Request comes from /users should be forwarded to user.js
 router.use("/users", require("./users"));
+router.use("/api", require("./api"));
 
 // For any other router the syntex will be
 // router.use("/routerName",require("./routerName"))
