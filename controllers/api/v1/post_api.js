@@ -28,15 +28,20 @@ module.exports.deletePost = async function (req, res) {
     // First we will find weather the post exsist of note.
     const post = await Post.findById(req.params.id);
     // Now we will check weather the user who has requested the post to be deleted is same as the post user.
-    // if (post.user.toString() === req.user.id) {
-    // Since delete is deprecated I have used deleteOne for that.
-    await post.deleteOne();
-    // After deleting the post we also need to delete comment under it So we will use deleteMany
-    await Comment.deleteMany({ post: req.params.id });
+    if (post.user.toString() === req.user.id) {
+      // Since delete is deprecated I have used deleteOne for that.
+      await post.deleteOne();
+      // After deleting the post we also need to delete comment under it So we will use deleteMany
+      await Comment.deleteMany({ post: req.params.id });
 
-    return res.json(200, {
-      message: "Successfully able to delete the post",
-    });
+      return res.json(200, {
+        message: "Successfully able to delete the post",
+      });
+    } else {
+      return res.json(401, {
+        message: "You Cann't delete this Post",
+      });
+    }
   } catch (err) {
     console.log("Error !!!!!!!!!!!", err);
     return res.json(200, {

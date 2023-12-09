@@ -6,7 +6,7 @@ const User = require("../models/user");
 
 let opts = {
   //Header have a list and out of this list we have a key authentication and it also have a list key value pair and one of them is Bearer
-  jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken,
+  jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
   secretOrKey: "Codial",
 };
 
