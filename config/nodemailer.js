@@ -13,7 +13,7 @@ let transporter = nodemailer.createTransport({
   secure: false, //no need of two step verification
   auth: {
     user: "testingcoding5@gmail.com",
-    pass: "Coding@123",
+    //App password
   },
 });
 
