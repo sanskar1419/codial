@@ -7,13 +7,16 @@ const nodemailer = require("../config/nodemailer");
 exports.newComment = (comment) => {
   console.log("Inside new comment mailer", comment);
   //   console.log(nodemailer.transporter);
-
+  let htmlContent = nodemailer.renderTemplate(
+    { comment: comment },
+    "/comments/new_comment_template.ejs"
+  );
   nodemailer.transporter.sendMail(
     {
       from: "testingcoding5@gmail.com",
       to: comment.user.email,
       subject: "New comment punlished",
-      html: "<h1>Hurray, Your comment has been published</h1>",
+      html: htmlContent,
     },
     (err, info) => {
       if (err) {
