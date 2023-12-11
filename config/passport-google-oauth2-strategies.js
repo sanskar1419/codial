@@ -7,6 +7,7 @@ const crypto = require("crypto");
 passport.use(
   new googleStrategy(
     {
+      //Todo give client id and secret here.*********************************************
       callbackURL: "http://localhost:9000/users/auth/google/callback",
     },
 
