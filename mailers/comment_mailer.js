@@ -5,7 +5,7 @@ const nodemailer = require("../config/nodemailer");
 // module.export = newcomment;
 
 exports.newComment = (comment) => {
-  console.log("Inside new comment mailer", comment);
+  // console.log("Inside new comment mailer", comment);
   //   console.log(nodemailer.transporter);
   let htmlContent = nodemailer.renderTemplate(
     { comment: comment },
