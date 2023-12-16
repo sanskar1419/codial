@@ -20,6 +20,13 @@ const postSchema = new mongoose.Schema(
         ref: "Comment",
       },
     ],
+    // Storing all the post like so that it is easily to accsess
+    likes: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Like",
+      },
+    ],
   },
   {
     // Automatically Update Two field created at and updated at

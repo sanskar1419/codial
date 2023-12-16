@@ -10,6 +10,7 @@ router.get("/", homeController.home);
 // router.use("/contact", homeController.contact);
 router.use("/posts", require("./posts"));
 router.use("/comments", require("./comment"));
+router.use("/likes", require("./likes"));
 
 // Request comes from /users should be forwarded to user.js
 router.use("/users", require("./users"));

@@ -13,7 +13,8 @@ module.exports.home = async function (req, res) {
         populate: {
           path: "user", //this will find the user commented on the post
         },
-      });
+      })
+      .populate("likes");
 
     const users = await User.find({});
     return res.render("home", {

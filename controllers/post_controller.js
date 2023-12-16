@@ -1,6 +1,7 @@
 // Importing Post Schema
 const Post = require("../models/post");
 const Comment = require("../models/comment");
+const Like = require("../models/like");
 
 // Function for creating new Post
 module.exports.createPost = async function (req, res) {
@@ -43,6 +44,9 @@ module.exports.deletePost = async function (req, res) {
     // console.log(req.user.id);
     // Now we will check weather the user who has requested the post to be deleted is same as the post user.
     if (post.user.toString() === req.user.id) {
+      // CHANGE :: delete the associated likes for the post and all its comments' likes too
+      await Like.deleteMany({ likeable: post, onModel: "Post" });
+      await Like.deleteMany({ _id: { $in: post.comments } });
       // console.log("hello");
       // Since delete is deprecated I have used deleteOne for that.
       await post.deleteOne();

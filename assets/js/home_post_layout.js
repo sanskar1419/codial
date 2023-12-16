@@ -31,6 +31,10 @@
 
           // call the create comment class
           new postComments(data.data.post._id);
+
+          // CHANGE :: enable the functionality of the toggle like button on the new post
+          new ToggleLike($(" .toggle-like-button", newPost));
+
           notyNotification("Post Created");
         },
         error: function (error) {
@@ -66,7 +70,13 @@
     <!-- Image footer -->
     <div class="other-link-container">
       <div class="like-comment-share-container">
-        <a href="" class="like-logo"><i class="fa-regular fa-heart"></i></a>
+        <a
+          class="toggle-like-button like-logo"
+          data-likes="0"
+          href="/likes/toggle/?id=${post._id}&type=Post"
+        >
+          <i class="fa-regular fa-heart"></i> 0
+        </a>
         <a href="" class="comment-logo"><i class="fa-regular fa-comment"></i></a>
         <a href="" class="share-logo"
           ><i class="fa-regular fa-paper-plane"></i

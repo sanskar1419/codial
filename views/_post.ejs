@@ -27,7 +27,17 @@
   <!-- Image footer -->
   <div class="other-link-container">
     <div class="like-comment-share-container">
-      <a href="" class="like-logo"><i class="fa-regular fa-heart"></i></a>
+      <% if (locals.user){ %>
+      <a
+        class="toggle-like-button like-logo"
+        data-likes="<%= post.likes.length %>"
+        href="/likes/toggle/?id=<%=post._id%>&type=Post"
+      >
+        <i class="fa-regular fa-heart"></i> <%= post.likes.length %>
+      </a>
+      <% }else{ %><i class="fa-regular fa-heart"></i> <%= post.likes.length %><%
+      } %>
+
       <a href="" class="comment-logo"><i class="fa-regular fa-comment"></i></a>
       <a href="" class="share-logo"
         ><i class="fa-regular fa-paper-plane"></i

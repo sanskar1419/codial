@@ -46,6 +46,10 @@ class postComments {
           );
           $(`#post-comment-${postId}`).prepend(newComment);
           pSelf.deleteComment($(" .delete-comment-button", newComment));
+
+          // CHANGE :: enable the functionality of the toggle like button on the new comment
+          new ToggleLike($(" .toggle-like-button", newComment));
+
           pSelf.notyNotification("Comment Created");
         },
         error: function (error) {
@@ -72,6 +76,15 @@ class postComments {
         ></a>
       </div>
     </div>
+    <div class="likeContainer">
+    <a
+      class="toggle-like-button"
+      data-likes="0"
+      href="/likes/toggle/?id=${comment._id}&type=Comment"
+    >
+      <i class="fa-regular fa-heart"></i> 0
+    </a>
+  </div>
   </li>
   
     `);

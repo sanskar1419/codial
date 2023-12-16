@@ -8,12 +8,11 @@ passport.use(
   new googleStrategy(
     {
       //Todo give client id and secret here.*********************************************
-     
       callbackURL: "http://localhost:9000/users/auth/google/callback",
     },
 
     async function (accessToken, refreshToken, profile, done) {
-      try 
+      try {
         let user = await User.findOne({ email: profile.emails[0].value });
         console.log(profile);
         if (user) {
