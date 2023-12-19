@@ -47,3 +47,12 @@
     let toggleLike = new ToggleLike(self);
   });
 </script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.7.2/socket.io.js"></script>
+<script src="/js/chat_engie.js"></script>
+<!-- now we will initiate this(front-end) class chatEngine -->
+<!-- calling the frontend side chat engine which is going to send by user  -->
+<% if(locals.user){ %>
+<script>
+  new chatEngine("user-chat-box", "<%= locals.user.email %>");
+</script>
+<% } %>

@@ -10,12 +10,21 @@ const session = require("express-session");
 const passport = require("passport");
 const passportLocal = require("./config/passport-local-strategies");
 const passportJWT = require("./config/passport-jwt-strategies");
+
 const passportGoogle = require("./config/passport-google-oauth2-strategies");
 const MongoStore = require("connect-mongo");
 const sassMiddleware = require("node-sass-middleware");
 // used for flash messeging
 const flash = require("connect-flash");
 const customMware = require("./config/middleware");
+
+// setup the chat server to be used with socket.io
+const http = require("http");
+const chatServer = http.Server(app);
+const chatSockets = require("./config/chat_socket").chatSockets(chatServer);
+chatServer.listen(5000, () => {
+  console.log("chat server is listening on port 5000");
+});
 
 // We need to put up some setting to use saas middleware
 //we need to put them just before the start of server so that it can be precompiled and whenever browser ask for it can give it the precompiled file.
