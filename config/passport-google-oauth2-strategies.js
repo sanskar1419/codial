@@ -2,16 +2,19 @@ const passport = require("passport");
 const User = require("../models/user");
 const googleStrategy = require("passport-google-oauth").OAuth2Strategy;
 const crypto = require("crypto");
+const env = require("./environment");
 
 // Defining that we are going to use google oauth2
 passport.use(
   new googleStrategy(
     {
       //Todo give client id and secret here.*********************************************
-      callbackURL: "http://localhost:9000/users/auth/google/callback",
+      clientID: env.google_client_id,
+      clientSecret: env.google_client_Secret,
+      callbackURL: env.google_callback_URL,
     },
 
-    async function (accessToken, refreshToken, profile, do
+    async function (accessToken, refreshToken, profile, done) {
       try {
         let user = await User.findOne({ email: profile.emails[0].value });
         console.log(profile);

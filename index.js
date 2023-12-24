@@ -1,4 +1,5 @@
 const express = require("express");
+const env = require("./config/environment");
 const cookieParsser = require("cookie-parser");
 const app = express();
 const port = 9000;
@@ -25,15 +26,15 @@ const chatSockets = require("./config/chat_socket").chatSockets(chatServer);
 chatServer.listen(5000, () => {
   console.log("chat server is listening on port 5000");
 });
-
+const path = require("path");
 // We need to put up some setting to use saas middleware
 //we need to put them just before the start of server so that it can be precompiled and whenever browser ask for it can give it the precompiled file.
 app.use(
   sassMiddleware({
     //Where do I pickup the file for scss to convert it to css
-    src: "./assets/scss",
+    src: path.join(__dirname, env.asset_path, "scss"),
     // Where I want to put my css files
-    dest: "./assets/css",
+    dest: path.join(__dirname, env.asset_path, "css"),
     // To display some error in debug mode if it not able to compile it we use debug
     debug: true,
     //If I wanted it to be in multiple line or single line
@@ -49,7 +50,7 @@ app.use(express.urlencoded());
 app.use(cookieParsser());
 
 // use assets folder for styling
-app.use(express.static("./assets"));
+app.use(express.static(env.asset_path));
 
 // Here we are joining the codial forlder path with uploads and telling to use this of finding the destination folder
 app.use("/uploads", express.static(__dirname + "/uploads"));
@@ -70,7 +71,7 @@ app.use(
   session({
     name: "codial",
     //change the secret before deployment in production mode
-    secret: "gvghccgcfgcgw",
+    secret: env.session_cookie_key,
     saveUninitialized: false,
     resave: false,
     cookie: {
@@ -78,7 +79,7 @@ app.use(
     },
     store: MongoStore.create(
       {
-        mongoUrl: "mongodb://localhost/codial_development",
+        mongoUrl: `mongodb://localhost/${env.db}`,
         autoRemove: "disabled",
       },
       function (err) {
