@@ -1,5 +1,6 @@
 const express = require("express");
 const env = require("./config/environment");
+const logger = require("morgan");
 const cookieParsser = require("cookie-parser");
 const app = express();
 const port = 9000;
@@ -46,7 +47,7 @@ if (env.name == "development") {
     })
   );
 }
-console.log(env.name);
+// console.log(env.name);
 // de encoding the data from POST request
 app.use(express.urlencoded());
 // tell the app to use cookie parser
@@ -57,6 +58,8 @@ app.use(express.static(env.asset_path));
 
 // Here we are joining the codial forlder path with uploads and telling to use this of finding the destination folder
 app.use("/uploads", express.static(__dirname + "/uploads"));
+
+app.use(logger(env.morgan.node, env.morgan.options));
 
 // Use express ejs layout
 app.use(expressLayout);
