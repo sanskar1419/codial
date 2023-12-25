@@ -27,23 +27,26 @@ chatServer.listen(5000, () => {
   console.log("chat server is listening on port 5000");
 });
 const path = require("path");
-// We need to put up some setting to use saas middleware
-//we need to put them just before the start of server so that it can be precompiled and whenever browser ask for it can give it the precompiled file.
-app.use(
-  sassMiddleware({
-    //Where do I pickup the file for scss to convert it to css
-    src: path.join(__dirname, env.asset_path, "scss"),
-    // Where I want to put my css files
-    dest: path.join(__dirname, env.asset_path, "css"),
-    // To display some error in debug mode if it not able to compile it we use debug
-    debug: true,
-    //If I wanted it to be in multiple line or single line
-    outputStyle: "expanded",
-    //Now I need to tell where i need to lookout for css file. previously it was css folder
-    prefix: "/css",
-  })
-);
 
+if (env.name == "development") {
+  // We need to put up some setting to use saas middleware
+  //we need to put them just before the start of server so that it can be precompiled and whenever browser ask for it can give it the precompiled file.
+  app.use(
+    sassMiddleware({
+      //Where do I pickup the file for scss to convert it to css
+      src: path.join(__dirname, env.asset_path, "scss"),
+      // Where I want to put my css files
+      dest: path.join(__dirname, env.asset_path, "css"),
+      // To display some error in debug mode if it not able to compile it we use debug
+      debug: true,
+      //If I wanted it to be in multiple line or single line
+      outputStyle: "expanded",
+      //Now I need to tell where i need to lookout for css file. previously it was css folder
+      prefix: "/css",
+    })
+  );
+}
+console.log(env.name);
 // de encoding the data from POST request
 app.use(express.urlencoded());
 // tell the app to use cookie parser
