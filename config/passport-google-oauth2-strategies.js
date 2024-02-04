@@ -2,16 +2,16 @@ const passport = require("passport");
 const User = require("../models/user");
 const googleStrategy = require("passport-google-oauth").OAuth2Strategy;
 const crypto = require("crypto");
-const env = require("./environment");
+require("../env.js");
 
 // Defining that we are going to use google oauth2
 passport.use(
   new googleStrategy(
     {
       //Todo give client id and secret here.*********************************************
-      clientID: env.google_client_id,
-      clientSecret: env.google_client_Secret,
-      callbackURL: env.google_callback_URL,
+      clientID: process.env.GOOGLE_CLIENT_ID,
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+      callbackURL: process.env.GOOGLE_CALLBACK_URL,
     },
 
     async function (accessToken, refreshToken, profile, done) {

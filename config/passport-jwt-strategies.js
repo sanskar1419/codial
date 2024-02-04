@@ -1,13 +1,13 @@
 const passport = require("passport");
 const JWTStrategy = require("passport-jwt").Strategy;
 const ExtractJwt = require("passport-jwt").ExtractJwt;
-const env = require("./environment");
+require("../env.js");
 const User = require("../models/user");
 
 let opts = {
   //Header have a list and out of this list we have a key authentication and it also have a list key value pair and one of them is Bearer
   jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
-  secretOrKey: env.jwt_key,
+  secretOrKey: process.env.JWT_KEY,
 };
 
 passport.use(

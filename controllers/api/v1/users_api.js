@@ -1,6 +1,6 @@
 const User = require("../../../models/user");
 const jwt = require("jsonwebtoken");
-const env = require("../../../config/environment");
+const env = require("../../../config/morgan");
 
 module.exports.createSession = async function (req, res) {
   try {
